@@ -15,7 +15,14 @@
 
 
         <ListBox x:Name="listBox_sportsmen" Grid.Column="0">
-
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Number}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
         <ListBox x:Name="listBox_competition"  Grid.Column="1">
@@ -23,7 +30,7 @@
         </ListBox>
 
         <StackPanel Grid.Column="2">
-            <Button x:Name="button_load" Content="Load"/>
+            <Button x:Name="button_load" Content="Load" Click="button_load_Click"/>
         </StackPanel>
     </Grid>
 </Window>
