@@ -21,11 +21,11 @@ namespace la05
         public MainWindowViewModell()
         {
 
-            LoadSportsmenCommand = new RelayCommand(
-                () => LoadSportsmen()
-                );
+            //LoadSportsmenCommand = new RelayCommand(
+            //    () => LoadSportsmen()
+            //    );
             TestValue = 0; //debug
-            //LoadSportsmen();
+            LoadSportsmen();
         }
 
         private void LoadSportsmen()
