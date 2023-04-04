@@ -37,6 +37,7 @@
 
         <StackPanel Grid.Column="2">
             <Button x:Name="button_load" Content="Load"  Command="{Binding LoadSportsmenCommand}"/>
+            <Label Content="{Binding TestValue}" FontSize="45"/>
         </StackPanel>
     </Grid>
 </Window>
