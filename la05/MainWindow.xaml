@@ -10,6 +10,9 @@
         <local:PermitToBackgroundConverter x:Key="PermitToBackgroundConverter"/>
     </Window.Resources>
     <Grid>
+        <Grid.DataContext>
+            <local:MainWindowViewModell />
+        </Grid.DataContext>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -17,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListBox x:Name="listBox_sportsmen" Grid.Column="0" HorizontalContentAlignment="Stretch">
+        <ListBox x:Name="listBox_sportsmen" Grid.Column="0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Sportsmen}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="{Binding HasPermit, Converter={StaticResource PermitToBackgroundConverter}}">
@@ -33,7 +36,7 @@
         </ListBox>
 
         <StackPanel Grid.Column="2">
-            <Button x:Name="button_load" Content="Load" Click="button_load_Click"/>
+            <Button x:Name="button_load" Content="Load"  Command="{Binding LoadSportsmenCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
