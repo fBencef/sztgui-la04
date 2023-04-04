@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
+
+        <ListBox x:Name="listBox_sportsmen" Grid.Column="0">
+
+        </ListBox>
+
+        <ListBox x:Name="listBox_competition"  Grid.Column="1">
+
+        </ListBox>
+
+        <StackPanel Grid.Column="2">
+            <Button x:Name="button_load" Content="Load"/>
+        </StackPanel>
     </Grid>
 </Window>
