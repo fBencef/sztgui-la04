@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:la05"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:PermitToBackgroundConverter x:Key="PermitToBackgroundConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,10 +17,10 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListBox x:Name="listBox_sportsmen" Grid.Column="0">
+        <ListBox x:Name="listBox_sportsmen" Grid.Column="0" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Background="{Binding HasPermit, Converter={StaticResource PermitToBackgroundConverter}}">
                         <Label Content="{Binding Name}"/>
                         <Label Content="{Binding Number}"/>
                     </StackPanel>
