@@ -21,6 +21,9 @@ namespace la05
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Ha itt van megvalósítva a collection és a Load (click event), akkor működik a betöltés.
+        //View-modelből még nem.
+        
         //ObservableCollection<Sportsman> sportsmen = new ObservableCollection<Sportsman>();
         public MainWindow()
         {
