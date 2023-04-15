@@ -31,8 +31,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox x:Name="listBox_competition"  Grid.Column="1">
-
+        <ListBox x:Name="listBox_competition"  Grid.Column="1" HorizontalContentAlignment="Stretch" ItemsSource="{Binding InCompetition}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="{Binding HasPermit, Converter={StaticResource PermitToBackgroundConverter}}">
+                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Number}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
         <StackPanel Grid.Column="2">
