@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace la05
 {
-    public class Sportsman
+    public class Sportsman : ObservableObject
     {
         private string name;
         private int personalBest;
@@ -15,6 +16,10 @@ namespace la05
         private string club;
         private int number;
 
+        public Sportsman()
+        {
+            
+        }
         public Sportsman(string name, int personalBest, int annualBest, bool hasPermit, string club, int number)
         {
             this.name = name;
@@ -33,6 +38,21 @@ namespace la05
         public int Number { get => number; set => number = value; }
         public int MarketValue { get => personalBest * annualBest; }
 
-        
+        public Sportsman GetCopy()
+        {
+            return new Sportsman()
+            {
+                Name = this.Name,
+                PersonalBest = this.PersonalBest,
+                AnnualBest = this.AnnualBest,
+                HasPermit = this.HasPermit,
+                Club = this.Club,
+                Number = this.Number
+            };
+    }
+
+
+
+
     }
 }
