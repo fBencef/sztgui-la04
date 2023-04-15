@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListBox x:Name="listBox_sportsmen" Grid.Column="0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Sportsmen}">
+        <ListBox x:Name="listBox_sportsmen" Grid.Column="0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Sportsmen}" SelectedItem="{Binding SelectedFromSportsmen}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="{Binding HasPermit, Converter={StaticResource PermitToBackgroundConverter}}">
@@ -31,7 +31,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox x:Name="listBox_competition"  Grid.Column="1" HorizontalContentAlignment="Stretch" ItemsSource="{Binding InCompetition}">
+        <ListBox x:Name="listBox_competition"  Grid.Column="1" HorizontalContentAlignment="Stretch" ItemsSource="{Binding InCompetition}" SelectedItem="{Binding SelectedFromCompetition}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="{Binding HasPermit, Converter={StaticResource PermitToBackgroundConverter}}">
@@ -44,6 +44,8 @@
 
         <StackPanel Grid.Column="2">
             <Button x:Name="button_load" Content="Load"  Command="{Binding LoadSportsmenCommand}"/>
+            <Button x:Name="button_addToCompetition" Content="Add to competition"  Command="{Binding AddToCompetitionCommand}"/>
+            <Button x:Name="button_ViewDetails" Content="View details"  Command="{Binding ViewDetailsCommand}"/>
             <Label Content="{Binding TestValue}" FontSize="45"/>
         </StackPanel>
     </Grid>
