@@ -12,6 +12,7 @@ namespace la05
 {
     public class MainWindowViewModell : ObservableRecipient
     {
+        ICompetitionLogic logic;
 
         private Sportsman selectedFromSportmen;
         private Sportsman selectedFromCompetition;
@@ -43,10 +44,19 @@ namespace la05
         public ICommand AddToCompetitionCommand { get; set; }
         public ICommand ViewDetailsCommand { get; set; }
 
-        public MainWindowViewModell()
+        public MainWindowViewModell() : this(new CompetitionLogic())
+        { 
+        
+        }
+        
+        public MainWindowViewModell(ICompetitionLogic logic)
         {
+            this.logic = logic;
+            
             Sportsmen = new ObservableCollection<Sportsman>();
             InCompetition = new ObservableCollection<Sportsman>();
+
+            logic.SetupCollections(Sportsmen, InCompetition);
 
             LoadSportsmenCommand = new RelayCommand(
                 () => LoadSportsmen(),
@@ -54,7 +64,7 @@ namespace la05
                 );
 
             AddToCompetitionCommand = new RelayCommand(
-                () => InCompetition.Add(SelectedFromSportsmen.GetCopy()),
+                () => logic.AddToCompetition(SelectedFromSportsmen),
                 () => SelectedFromSportsmen != null
                 );
 
