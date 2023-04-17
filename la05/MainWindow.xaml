@@ -46,7 +46,12 @@
             <Button x:Name="button_load" Content="Load"  Command="{Binding LoadSportsmenCommand}"/>
             <Button x:Name="button_addToCompetition" Content="Add to competition"  Command="{Binding AddToCompetitionCommand}"/>
             <Button x:Name="button_ViewDetails" Content="View details"  Command="{Binding ViewDetailsCommand}"/>
-            <Label Content="{Binding TestValue}" FontSize="45"/>
+            
+            <Label Content="Competition title" FontSize="15"/>
+            <TextBox x:Name="textBox_competitionTitle"/>
+            <Label Content="Date" FontSize="15"/>
+            <TextBox x:Name="textBox_date"/>
+            <Button x:Name="button_saveCompetition" Content="Save competition" Command="{Binding SaveCompetitionCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
