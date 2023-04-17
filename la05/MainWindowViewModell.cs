@@ -1,10 +1,12 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +50,7 @@ namespace la05
         public ICommand LoadSportsmenCommand { get; set; }
         public ICommand AddToCompetitionCommand { get; set; }
         public ICommand ViewDetailsCommand { get; set; }
-        public ICommand ExportCompetition { get; set; }
+        public ICommand ExportCompetitionCommand { get; set; }
 
         public static bool IsInDesignMode
         {
@@ -89,9 +91,9 @@ namespace la05
                 () => SelectedFromCompetition != null
                 );
 
-            ExportCompetition = new RelayCommand(
-                () => logic.ExportCompetition(InCompetition, title, date),
-                () => SelectedFromCompetition != null
+            ExportCompetitionCommand = new RelayCommand(
+                () => ExportCompetition(InCompetition, title, date),
+                () => true
                 );
         }
 
@@ -100,6 +102,17 @@ namespace la05
             Sportsmen.Add(new Sportsman("Jack", 75, 70, true, "Club1", 50));
             Sportsmen.Add(new Sportsman("Joe", 70, 75, false, "Club1", 60));
             Sportsmen.Add(new Sportsman("James", 78, 40, true, "Club3", 52));
+        }
+
+        //Does not work from logic, using this instead
+        private void ExportCompetition(ICollection<Sportsman> competition, string title, string date)
+        {
+            string path = $"{title}-{date}.json";
+
+            MessageBox.Show($"Exported competition as: \"{path}\"");
+
+            var json = JsonConvert.SerializeObject(competition);
+            File.WriteAllText(path, json);
         }
     }
 }

@@ -51,7 +51,7 @@
             <TextBox x:Name="textBox_competitionTitle"/>
             <Label Content="Date" FontSize="15"/>
             <TextBox x:Name="textBox_date"/>
-            <Button x:Name="button_saveCompetition" Content="Save competition" Command="{Binding SaveCompetitionCommand}"/>
+            <Button x:Name="button_saveCompetition" Content="Save competition" Command="{Binding ExportCompetitionCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
