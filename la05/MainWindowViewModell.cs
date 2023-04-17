@@ -1,11 +1,14 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace la05
@@ -44,15 +47,25 @@ namespace la05
         public ICommand AddToCompetitionCommand { get; set; }
         public ICommand ViewDetailsCommand { get; set; }
 
-        public MainWindowViewModell() : this(new CompetitionLogic())
-        { 
-        
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                var prop = DesignerProperties.IsInDesignModeProperty;
+                return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
+            }
         }
-        
+
+        public MainWindowViewModell()
+            :this(IsInDesignMode ? null : Ioc.Default.GetService<ICompetitionLogic>())
+        {
+            
+        }
+
         public MainWindowViewModell(ICompetitionLogic logic)
         {
             this.logic = logic;
-            
+
             Sportsmen = new ObservableCollection<Sportsman>();
             InCompetition = new ObservableCollection<Sportsman>();
 
@@ -69,7 +82,7 @@ namespace la05
                 );
 
             ViewDetailsCommand = new RelayCommand(
-                () => Sportsmen.Add(null),
+                () => logic.ViewDetails(SelectedFromCompetition),
                 () => SelectedFromCompetition != null
                 );
         }

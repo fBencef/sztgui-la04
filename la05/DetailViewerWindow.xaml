@@ -1,0 +1,18 @@
+﻿<Window x:Class="la05.DetailViewerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:la05"
+        mc:Ignorable="d"
+        Title="DetailViewer" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="15">
+            <Label x:Name="label_name_number" Content="Név - 00" FontSize="30" FontWeight="Bold"/>
+            <Label x:Name="label_club" Content="Egyesület:" FontSize="20"/>
+            <Label x:Name="label_permit" Content="Engedély:" FontSize="20"/>
+            <Label x:Name="label_personalBest" Content="Egyéni csúcs:" FontSize="20"/>
+            <Label x:Name="label_annualBest" Content="Éves csúcs:" FontSize="20"/>
+        </StackPanel>
+    </Grid>
+</Window>

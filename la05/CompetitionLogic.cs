@@ -11,7 +11,12 @@ namespace la05
     {
         IList<Sportsman> sportsmen;
         IList<Sportsman> competition;
-        IMessenger messenger;
+        IDetailViewerService detailViewerService;
+
+        public CompetitionLogic(IDetailViewerService viwerService)
+        {
+            this.detailViewerService = viwerService;
+        }
 
         public void SetupCollections(IList<Sportsman> sportsmen, IList<Sportsman> competition)
         {
@@ -23,10 +28,14 @@ namespace la05
         {
             competition.Add(sportsman);
         }
-
         public void RemoveFromCompetition(Sportsman sportsman)
         {
-            competition.Remove(sportsman);
+            throw new NotImplementedException();
+        }
+
+        public void ViewDetails(Sportsman sportsman)
+        { 
+            detailViewerService.ViewDetails(sportsman);
         }
 
         public void LoadSportsmen()
@@ -35,5 +44,6 @@ namespace la05
             sportsmen.Add(new Sportsman("Joe", 70, 75, false, "Club1", 60));
             sportsmen.Add(new Sportsman("James", 78, 40, true, "Club3", 52));
         }
+
     }
 }
