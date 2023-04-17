@@ -19,6 +19,8 @@ namespace la05
 
         private Sportsman selectedFromSportmen;
         private Sportsman selectedFromCompetition;
+        private string title = "testTitle";
+        private string date = "testDate";
 
         public ObservableCollection<Sportsman> Sportsmen { get; set; }
         public ObservableCollection<Sportsman> InCompetition { get; set; }
@@ -46,6 +48,7 @@ namespace la05
         public ICommand LoadSportsmenCommand { get; set; }
         public ICommand AddToCompetitionCommand { get; set; }
         public ICommand ViewDetailsCommand { get; set; }
+        public ICommand ExportCompetition { get; set; }
 
         public static bool IsInDesignMode
         {
@@ -83,6 +86,11 @@ namespace la05
 
             ViewDetailsCommand = new RelayCommand(
                 () => logic.ViewDetails(SelectedFromCompetition),
+                () => SelectedFromCompetition != null
+                );
+
+            ExportCompetition = new RelayCommand(
+                () => logic.ExportCompetition(InCompetition, title, date),
                 () => SelectedFromCompetition != null
                 );
         }

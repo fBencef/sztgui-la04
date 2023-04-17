@@ -22,6 +22,7 @@ namespace la05
                 new ServiceCollection()
                 .AddSingleton<ICompetitionLogic, CompetitionLogic>()
                 .AddSingleton<IDetailViewerService, DetailViewerViaWindow>()
+                .AddSingleton<ICompetitionExporterService, CompetitionExporter>()
                 .BuildServiceProvider()
                 );
         }

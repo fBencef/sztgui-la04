@@ -12,10 +12,12 @@ namespace la05
         IList<Sportsman> sportsmen;
         IList<Sportsman> competition;
         IDetailViewerService detailViewerService;
+        ICompetitionExporterService competitionExporterService;
 
-        public CompetitionLogic(IDetailViewerService viwerService)
+        public CompetitionLogic(IDetailViewerService viwerService, ICompetitionExporterService exporterService)
         {
             this.detailViewerService = viwerService;
+            this.competitionExporterService = exporterService;
         }
 
         public void SetupCollections(IList<Sportsman> sportsmen, IList<Sportsman> competition)
@@ -32,6 +34,10 @@ namespace la05
         public void ViewDetails(Sportsman sportsman)
         { 
             detailViewerService.ViewDetails(sportsman);
+        }
+        public void ExportCompetition(IList<Sportsman> competition, string title, string date)
+        {
+            competitionExporterService.SaveToJson(competition, title, date);
         }
 
         public void LoadSportsmen()
