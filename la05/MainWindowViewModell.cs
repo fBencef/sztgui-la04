@@ -21,11 +21,14 @@ namespace la05
 
         private Sportsman selectedFromSportmen;
         private Sportsman selectedFromCompetition;
-        private string title = "testTitle";
-        private string date = "testDate";
+        private string title = "Competition Title";
+        private string date = "YYMMDD";
 
         public ObservableCollection<Sportsman> Sportsmen { get; set; }
         public ObservableCollection<Sportsman> InCompetition { get; set; }
+
+        public string Title { get => title; set => title = value; }
+        public string Date { get => date; set => date = value; }
 
         public Sportsman SelectedFromSportsmen
         {
@@ -78,7 +81,7 @@ namespace la05
 
             LoadSportsmenCommand = new RelayCommand(
                 () => LoadSportsmen(),
-                () => Sportsmen.Count == 0
+                () => true
                 );
 
             AddToCompetitionCommand = new RelayCommand(

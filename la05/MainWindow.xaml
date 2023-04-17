@@ -47,10 +47,10 @@
             <Button x:Name="button_addToCompetition" Content="Add to competition"  Command="{Binding AddToCompetitionCommand}"/>
             <Button x:Name="button_ViewDetails" Content="View details"  Command="{Binding ViewDetailsCommand}"/>
             
-            <Label Content="Competition title" FontSize="15"/>
-            <TextBox x:Name="textBox_competitionTitle"/>
+            <Label Content="Competition Title" FontSize="15"/>
+            <TextBox x:Name="textBox_competitionTitle" Text="{Binding Title}"/>
             <Label Content="Date" FontSize="15"/>
-            <TextBox x:Name="textBox_date"/>
+            <TextBox x:Name="textBox_date" Text="{Binding Date}"/>
             <Button x:Name="button_saveCompetition" Content="Save competition" Command="{Binding ExportCompetitionCommand}"/>
         </StackPanel>
     </Grid>
