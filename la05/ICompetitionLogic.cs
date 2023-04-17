@@ -6,7 +6,6 @@ namespace la05
     {
         void AddToCompetition(Sportsman sportsman);
         void ViewDetails(Sportsman sportsman);
-        void RemoveFromCompetition(Sportsman sportsman);
         void SetupCollections(IList<Sportsman> sportsmen, IList<Sportsman> competition);
     }
 }

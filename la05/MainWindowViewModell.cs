@@ -78,7 +78,7 @@ namespace la05
 
             AddToCompetitionCommand = new RelayCommand(
                 () => logic.AddToCompetition(SelectedFromSportsmen),
-                () => SelectedFromSportsmen != null
+                () => SelectedFromSportsmen != null && SelectedFromSportsmen.HasPermit
                 );
 
             ViewDetailsCommand = new RelayCommand(

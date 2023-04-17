@@ -28,10 +28,6 @@ namespace la05
         {
             competition.Add(sportsman);
         }
-        public void RemoveFromCompetition(Sportsman sportsman)
-        {
-            throw new NotImplementedException();
-        }
 
         public void ViewDetails(Sportsman sportsman)
         { 
